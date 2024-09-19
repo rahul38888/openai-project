@@ -1,0 +1,50 @@
+Cards:
+  - Card Name: Citi / AAdvantage Platinum Select World Elite Mastercard
+    Rating: 4.3
+    Reviews: 4686
+    Link: https://www.citi.com/credit-cards/citi-aadvantage-platinum-elite-credit-card?category=view-all-credit-cards&intc=citihpmenu~creditcards~vac&afc=1C2
+    Features:
+      - For a limited time, earn 75,000 American Airlines AAdvantage bonus miles after $3,500 in purchases within the first 4 months of account opening.
+      - Earn 2 AAdvantage miles for every $1 spent at restaurants, gas stations, and eligible American Airlines purchases.
+      - Earn 1 AAdvantage mile for every $1 spent on all other purchases.
+      - Earn 1 Loyalty Point for every 1 eligible mile earned from purchases.
+      - First checked bag free on American Airlines domestic itineraries2
+      - No foreign transaction fees1
+      - No limit on miles you can earn
+      - Preferred boarding on American Airlines flights
+      - 25% savings when you use your card on American Airlines inflight food and beverage purchases
+
+  - Card Name: Citi Strata Premier℠ Credit Card
+    Rating: 4.3
+    Reviews: 2483
+    Link: https://www.citi.com/credit-cards/citi-strata-premier-credit-card?category=view-all-credit-cards&intc=citihpmenu~creditcards~vac&afc=1C2
+    Features:
+      - For a limited time, earn 75,000 bonus points after spending $4,000 in the first 3 months of account opening, redeemable for $750 in gift cards or travel rewards on thankyou.com.
+      - Now an ongoing benefit! Earn a total of 10 ThankYou Points per $1 spent on Hotel, Car Rentals, and Attractions booked through CitiTravel.com
+      - Earn 3timesX ThankYou Points per $1 spent on Air Travel and Other Hotel Purchases, Restaurants, Supermarkets, Gas Stations and – newly added! – EV Charging Stations.
+      - Earn 1 ThankYou Point per $1 spent on All Other Purchases.
+      - Enjoy $100 off a single hotel stay of $500 or more, excluding taxes and fees, through CitiTravel.com, once per calendar year. Benefit applied instantly at the time of booking
+
+  - Card Name: Citi Double Cash Card
+    Rating: 4.5
+    Reviews: 624
+    Link: https://www.citi.com/credit-cards/citi-double-cash-credit-card?category=view-all-credit-cards&intc=citihpmenu~creditcards~vac&afc=1C2
+    Features:
+      - 0% Intro APR for 18 months on balance transfers; after that, the variable APR will be 19.24% - 29.24% based on your creditworthiness.
+      - Unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase.
+      - Earn $200 cash back after you spend $1,500 on purchases in the first 6 months of account opening.
+      - For a limited time, earn 5% total cash back on hotel, car rental and attractions when booked on the Citi TravelSM portal through 12/31/24. This is 3% cash back on top of the 1% when you buy and the 1% as you pay.
+      - Mastercard ID Theft Protection available for no additional charge
+      - $0 liability on unauthorized charges
+
+  - Card Name: Citi Custom Cash Card
+    Rating: 4.5
+    Reviews: 776
+    Link: https://www.citi.com/credit-cards/citi-custom-cash-credit-card?category=view-all-credit-cards&intc=citihpmenu~creditcards~vac&afc=1C2
+    Features:
+      - Earn 5% cash back on your top eligible spend category each billing cycle up to $500 spent.
+      - Earn 1% cash back thereafter on all other purchases.
+      - Special Travel Offer, Earn an additional 4% cash back on hotels, car rentals, and attractions booked on Citi Travel℠ portal through 6/30/2025
+      - 0% Intro APR for 15 months on purchases and balance transfers; after that, the variable APR will be 19.24% - 29.24%, based on your creditworthiness.
+      - Balance transfer fee of either $5 or 5% of the amount of each credit card balance transfer, whichever is greater.
+      - Balance Transfers must be completed within 4 months of account opening.
