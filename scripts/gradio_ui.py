@@ -32,7 +32,7 @@ class GradioBotUI:
                     history = self.bot.get_history_copy()
                     greetings = self.greeting(history)
                     with gr.Row():
-                        chatbot = gr.Chatbot(bubble_full_width=False, likeable=True, show_copy_button=True,
+                        chatbot = gr.Chatbot(bubble_full_width=False, show_copy_button=True,
                                              avatar_images=(self.user_avatar, self.agent_avatar), scale=1,
                                              value=[[None, greetings]], show_copy_all_button=True)
 
