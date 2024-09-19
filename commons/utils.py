@@ -13,3 +13,8 @@ def prompt_path(file_name: str):
 
 def media_path(file_name: str):
     return DEFAULT_DIR_PATH / "media" / file_name
+
+
+def resource_path(file_name: str):
+    return DEFAULT_DIR_PATH / "resources" / file_name
+

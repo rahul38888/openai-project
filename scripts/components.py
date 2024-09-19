@@ -4,6 +4,7 @@ from os import PathLike
 
 from openai import OpenAI
 
+from commons.loggerfactory import LoggerFactory
 from commons.utils import getdefault
 from scripts.io import InputOutput
 
@@ -57,6 +58,7 @@ class ChatHistory:
 
 class OpenAIBot:
     def __init__(self, bot: OpenAI, model: str, prompt: PathLike | str, context_span: int, **args):
+        self.logger = LoggerFactory.getLogger(self.__class__.__name__)
         self.__bot = bot
         self.__model = model
         final_prompt = prompt
@@ -83,8 +85,8 @@ class OpenAIBot:
             messages = history.add_message(Role.USER, user_input).get_whole_context()
 
             chat = self.__bot.chat.completions.create(model=self.__model, messages=messages)
-            # print(f"Tokens count, prompts: {chat.usage.prompt_tokens}, completion: {chat.usage.completion_tokens}, "
-            #       f"total: {chat.usage.total_tokens}")
+            self.logger.info("Tokens count, prompts: %s, completion: %s, total: %s",
+                             chat.usage.prompt_tokens, chat.usage.completion_tokens, chat.usage.total_tokens)
             # del messages
 
             reply = chat.choices[0].message.content

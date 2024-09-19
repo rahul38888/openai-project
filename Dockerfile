@@ -30,7 +30,10 @@ COPY ./commons commons
 COPY ./media media
 COPY ./scripts scripts
 COPY ./system_prompts system_prompts
+COPY ./resources resources
 
 COPY ./bot.py bot.py
 
 EXPOSE 8080
+
+CMD ["python3", "bot.py"]

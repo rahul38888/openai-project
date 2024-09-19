@@ -3,6 +3,5 @@ services:
     build: .
     ports:
       - "8080:8080"
-    entrypoint: ["python3", "bot.py"]
     environment:
       - OPENAI_API_KEY

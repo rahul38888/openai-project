@@ -1,5 +1,6 @@
 from openai import OpenAI
 
+from commons.loggerfactory import LoggerFactory
 from commons.utils import prompt_path, media_path
 from scripts.components import OpenAIBot
 from scripts.gradio_ui import GradioBotUI
@@ -17,6 +18,9 @@ class GradioBot:
 
     gradio_bot = GradioBotUI(openai_bot, user_avatar=media_path("user.png"), agent_avatar=media_path("agent.png"))
 
+    def __init__(self):
+        self.logger = LoggerFactory.getLogger(self.__class__.__name__)
+
     def start(self):
-        print("Starting gradio bot ...")
+        self.logger.info("Starting gradio bot ...")
         self.gradio_bot.launch()

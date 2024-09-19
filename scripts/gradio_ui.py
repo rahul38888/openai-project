@@ -2,17 +2,19 @@ from pathlib import Path
 
 import gradio as gr
 
+from commons.loggerfactory import LoggerFactory
 from scripts.components import OpenAIBot, DEFAULT_WELCOME_MESSAGE, DEFAULT_EXIT_MESSAGE, ChatHistory
 
 
 class GradioBotUI:
     def __init__(self, bot: OpenAIBot, user_avatar: str | Path, agent_avatar: str | Path):
+        self.logger = LoggerFactory.getLogger(self.__class__.__name__)
         self.bot = bot
         self.user_avatar = user_avatar
         self.agent_avatar = agent_avatar
 
     def launch(self):
-        print("Launching gradio ui ...")
+        self.logger.info("Launching gradio ui ...")
         with gr.Blocks() as demo:
             with gr.Row():
                 gr.Markdown(
@@ -37,7 +39,7 @@ class GradioBotUI:
             user_step.then(self.agent_message, inputs=[state, chatbot], outputs=[prompt, state, chatbot])
 
         demo.launch(server_port=8080, server_name="0.0.0.0")
-        print("Done launching gradio ui!")
+        self.logger.info("Done launching gradio ui!")
 
     def user_message(self, user_text, history):
         return gr.Textbox(label="Prompt"), history + [[user_text, None]]
