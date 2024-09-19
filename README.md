@@ -1,13 +1,10 @@
 ---
-title: Aibot
+title: AiBot
 emoji: 🏃
 colorFrom: gray
 colorTo: green
-sdk: gradio
-sdk_version: 4.44.0
-app_file: bot.py
+sdk: docker
 pinned: false
-python_version: 3.10.2
 app_port: 8080
 ---
 
