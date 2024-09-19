@@ -12,6 +12,7 @@ class GradioBotUI:
         self.agent_avatar = agent_avatar
 
     def launch(self):
+        print("Launching gradio ui ...")
         with gr.Blocks() as demo:
             with gr.Row():
                 gr.Markdown(
@@ -35,7 +36,8 @@ class GradioBotUI:
                                       outputs=[prompt, chatbot], queue=False)
             user_step.then(self.agent_message, inputs=[state, chatbot], outputs=[prompt, state, chatbot])
 
-        demo.launch()
+        demo.launch(server_port=8080, server_name="0.0.0.0")
+        print("Done launching gradio ui!")
 
     def user_message(self, user_text, history):
         return gr.Textbox(label="Prompt"), history + [[user_text, None]]

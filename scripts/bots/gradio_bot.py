@@ -18,4 +18,5 @@ class GradioBot:
     gradio_bot = GradioBotUI(openai_bot, user_avatar=media_path("user.png"), agent_avatar=media_path("agent.png"))
 
     def start(self):
+        print("Starting gradio bot ...")
         self.gradio_bot.launch()
