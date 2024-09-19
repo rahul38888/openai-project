@@ -1,4 +1,4 @@
-```yaml
+---
 title: Aibot
 emoji: 🏃
 colorFrom: gray
@@ -9,7 +9,7 @@ app_file: bot.py
 pinned: false
 python_version: 3.10.2
 app_port: 8080
-```
+---
 
 # openai-project
 
