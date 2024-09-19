@@ -15,7 +15,7 @@ class GradioBotUI:
 
     def launch(self):
         self.logger.info("Launching gradio ui ...")
-        with gr.Blocks() as demo:
+        with gr.Blocks(title="Butter Robot!", fill_height=True) as demo:
             with gr.Row():
                 gr.Markdown(
                     """
@@ -26,13 +26,11 @@ class GradioBotUI:
                     """)
 
             with gr.Column():
-                with gr.Row(show_progress=True):
-                    chatbot = gr.Chatbot(bubble_full_width=False, likeable=True, show_copy_button=True,
-                                         avatar_images=(self.user_avatar, self.agent_avatar),
-                                         value=[[None, DEFAULT_WELCOME_MESSAGE]])
-                with gr.Row():
-                    prompt = gr.Textbox(label="Prompt")
-                    state = gr.State(value=(self.bot.get_history_copy()))
+                chatbot = gr.Chatbot(bubble_full_width=False, likeable=True, show_copy_button=True,
+                                     avatar_images=(self.user_avatar, self.agent_avatar),
+                                     value=[[None, DEFAULT_WELCOME_MESSAGE]], scale=1)
+                prompt = gr.Textbox(label="Prompt")
+                state = gr.State(value=(self.bot.get_history_copy()))
 
             user_step = prompt.submit(self.user_message, inputs=[prompt, chatbot],
                                       outputs=[prompt, chatbot], queue=False)
