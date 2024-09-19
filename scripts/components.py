@@ -57,14 +57,15 @@ class ChatHistory:
 
 
 class OpenAIBot:
-    def __init__(self, bot: OpenAI, model: str, prompt: PathLike | str, context_span: int, **args):
+    def __init__(self, bot: OpenAI, model: str, prompts: list[PathLike | str], context_span: int, **args):
         self.logger = LoggerFactory.getLogger(self.__class__.__name__)
         self.__bot = bot
         self.__model = model
-        final_prompt = prompt
-        if isinstance(prompt, PathLike):
+        for prompt in prompts:
+            final_prompt = ""
             with open(prompt, "r") as pf:
-                final_prompt = pf.read()
+                final_prompt += pf.read()
+        final_prompt = "You are Rick Sanchez from Rick and Morty."
         self.__history_instance = ChatHistory(context_span=context_span,
                                               initial_context=[{"role": Role.SYSTEM.value, "content": final_prompt}])
         self.__history = self.get_history_copy()
@@ -73,7 +74,7 @@ class OpenAIBot:
     def __is_exit(self, message: str) -> bool:
         return message.lower() in self.__exit_codes
 
-    def respond(self, user_input: str, history: ChatHistory = None) -> str | bool:
+    def respond(self, user_input: str, history: ChatHistory = None, append_user_input: bool = True) -> str | bool:
         if not history:
             history = self.__history
 
@@ -83,6 +84,10 @@ class OpenAIBot:
         response = None
         if user_input:
             messages = history.add_message(Role.USER, user_input).get_whole_context()
+
+            if not append_user_input:
+                messages = history.get_whole_context()
+                messages.append({"role": "user", "content": user_input})
 
             chat = self.__bot.chat.completions.create(model=self.__model, messages=messages)
             self.logger.info("Tokens count, prompts: %s, completion: %s, total: %s",

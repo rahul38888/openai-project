@@ -11,12 +11,12 @@ class GradioBot:
     exit_codes = ["done", "quit", "exit"]
 
     client = OpenAI()
-    prompt = prompt_path(file_name="financial_bot.txt")
-    input_output = TerminalIO("User: ", "Agent: ")
+    prompts = [prompt_path(file_name="rick_and_morty/System_prompt.txt")]
 
-    openai_bot = OpenAIBot(client, "gpt-4o-mini", prompt, 10, exit_codes=exit_codes)
+    openai_bot = OpenAIBot(client, "gpt-4o-mini", prompts, 30, exit_codes=exit_codes)
 
-    gradio_bot = GradioBotUI(openai_bot, user_avatar=media_path("user.png"), agent_avatar=media_path("agent.png"))
+    gradio_bot = GradioBotUI(openai_bot, user_avatar=media_path("characters/morty.png"),
+                             agent_avatar=media_path("characters/rick.png"))
 
     def __init__(self):
         self.logger = LoggerFactory.getLogger(self.__class__.__name__)

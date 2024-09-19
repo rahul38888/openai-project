@@ -15,22 +15,30 @@ class GradioBotUI:
 
     def launch(self):
         self.logger.info("Launching gradio ui ...")
-        with gr.Blocks(title="Butter Robot!", fill_height=True) as demo:
+        with gr.Blocks(title="Rick and Morty!", fill_height=True) as demo:
             with gr.Row():
-                gr.Markdown(
-                    """
-                    <center>
-                        <h1>Butter Robot!</h1>
-                        <h3>What is my purpose? </h3>
-                    </center>
-                    """)
+                gr.Image(value="media/rnm_title.png", height="100px", container=False, show_download_button=False,
+                         show_fullscreen_button=False)
 
-            with gr.Column():
-                chatbot = gr.Chatbot(bubble_full_width=False, likeable=True, show_copy_button=True,
-                                     avatar_images=(self.user_avatar, self.agent_avatar),
-                                     value=[[None, DEFAULT_WELCOME_MESSAGE]], scale=1)
-                prompt = gr.Textbox(label="Prompt")
-                state = gr.State(value=(self.bot.get_history_copy()))
+            with gr.Row():
+                with gr.Column():
+                    with gr.Row():
+                        gr.HTML(value="<center><h1>Adventure generator</h1></center>")
+                    with gr.Row():
+                        gr.Image(value="media/rnm_poster.png", container=False, show_download_button=False,
+                                 show_fullscreen_button=False, height="80%")
+
+                with gr.Column():
+                    history = self.bot.get_history_copy()
+                    greetings = self.greeting(history)
+                    with gr.Row():
+                        chatbot = gr.Chatbot(bubble_full_width=False, likeable=True, show_copy_button=True,
+                                             avatar_images=(self.user_avatar, self.agent_avatar), scale=1,
+                                             value=[[None, greetings]], show_copy_all_button=True)
+
+                    with gr.Row():
+                        prompt = gr.Textbox(label="Prompt")
+                    state = gr.State(value=history)
 
             user_step = prompt.submit(self.user_message, inputs=[prompt, chatbot],
                                       outputs=[prompt, chatbot], queue=False)
@@ -42,11 +50,21 @@ class GradioBotUI:
     def user_message(self, user_text, history):
         return gr.Textbox(label="Prompt"), history + [[user_text, None]]
 
+    def greeting(self, chat_history: ChatHistory):
+        response = self.bot.respond("You see Morty, Greet him! Make up a short story hook",
+                                    chat_history, append_user_input=False)
+        return response
+
+    def __bye(self, chat_history: ChatHistory):
+        response = self.bot.respond("Morty is leaving. Give an apt response. Keep it short",
+                                    chat_history, append_user_input=False)
+        return response
+
     def agent_message(self, chat_history: ChatHistory, history):
         user_text = history[-1][0]
         response = self.bot.respond(user_text, chat_history)
         if not response:
-            history[-1][1] = DEFAULT_EXIT_MESSAGE
+            history[-1][1] = self.__bye(chat_history)
             return gr.Textbox(label="Prompt", interactive=False), chat_history, history
         history[-1][1] = response
         return "", chat_history, history
