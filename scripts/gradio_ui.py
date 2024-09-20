@@ -6,6 +6,11 @@ from commons.loggerfactory import LoggerFactory
 from scripts.components import OpenAIBot, DEFAULT_WELCOME_MESSAGE, DEFAULT_EXIT_MESSAGE, ChatHistory
 
 
+GREETING_PROMPT = ("You con imagine a story hook and imagine the state of Rick.\n"
+                   "You see Morty, Greet him in few words!")
+EXIT_PROMPT = "Morty is leaving. Give an apt response. Keep it short"
+
+
 class GradioBotUI:
     def __init__(self, bot: OpenAIBot, user_avatar: str | Path, agent_avatar: str | Path):
         self.logger = LoggerFactory.getLogger(self.__class__.__name__)
@@ -51,13 +56,11 @@ class GradioBotUI:
         return gr.Textbox(label="Prompt"), history + [[user_text, None]]
 
     def greeting(self, chat_history: ChatHistory):
-        response = self.bot.respond("You see Morty, Greet him! Make up a short story hook",
-                                    chat_history, append_user_input=False)
+        response = self.bot.respond(GREETING_PROMPT, chat_history, append_user_input=True)
         return response
 
     def __bye(self, chat_history: ChatHistory):
-        response = self.bot.respond("Morty is leaving. Give an apt response. Keep it short",
-                                    chat_history, append_user_input=False)
+        response = self.bot.respond(EXIT_PROMPT, chat_history, append_user_input=False)
         return response
 
     def agent_message(self, chat_history: ChatHistory, history):
